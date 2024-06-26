@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="questionSpace"></h1>
+    <input id="userInput">
+    <button id="submitButton">Submit</button>
+    <h3 id="result"></h3>
+
+    <script>
+        var questionSpace = document.getElementById("questionSpace");
+        var userInput = document.getElementById("userInput");
+        var submitButton = document.getElementById("submitButton");
+        var result = document.getElementById("result");
+        var quizIndex = 0;
+        var score = 0;
+        var quizData = [{
+            "question": "What is 2+2?", "answer": "4"
+        }, {
+            "question": "What is 3+3?", "answer": "6"
+        }, {
+            "question": "What is 4+4?", "answer": "8"
+        }];
+
+        questionSpace.textContent = quizData[quizIndex]["question"];
+
+        function submitFunction() {
+            if(userInput.value == quizData[quizIndex]["answer"]) {
+                score++
+                if(quizIndex == 2) {
+                    result.textContent = "Your score is " + score;
+                }
+            } else {
+                if(quizIndex == 2) {
+                    result.textContent = "Your score is " + score;
+                }     
+            }
+            quizIndex++
+            questionSpace.textContent = quizData[quizIndex]["question"];
+        }
+
+
+        submitButton.addEventListener("click", submitFunction)
+    </script>
+</body>
+</html>
